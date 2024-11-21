@@ -1,15 +1,15 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "@/components/footer";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
+import Header from "@/components/header";
+import { Pixelify_Sans } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const siteFont = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "auto",
 });
 
 export const metadata = {
@@ -20,10 +20,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${siteFont.className} antialiased`}>
+        <SidebarProvider defaultOpen={true}>
+          <AppSidebar />
+          <div className="flex flex-col flex-1">
+            <Header />
+            <main className="flex flex-col p-4">{children}</main>
+            <Footer />
+          </div>
+        </SidebarProvider>
       </body>
     </html>
   );
