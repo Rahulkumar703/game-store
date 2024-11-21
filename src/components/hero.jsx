@@ -1,3 +1,4 @@
+import Carousel from "./carousel";
 import GameCard from "./game-card";
 
 const games = [
@@ -89,10 +90,13 @@ const games = [
 
 const Hero = () => {
   return (
-    <section className="grid grid-cols-2 gap-4">
-      {games.map((game, index) => {
-        return <GameCard key={index} {...game} size={"icon"} />;
-      })}
+    <section className="grid grid-cols-2 gap-4 overflow-x-hidden">
+      <Carousel slides={games} className="col-span-2 w-full" />
+      <GameCard {...games[0]} />
+      <div className="flex flex-col gap-2">
+        <GameCard {...games[1]} size={"list"} className="h-1/2" />
+        <GameCard {...games[2]} size={"list"} className="h-1/2" />
+      </div>
     </section>
   );
 };
