@@ -56,7 +56,7 @@ const GameCard = ({
           />
           <div className="">
             <CardTitle>
-              <Title content={title} className="line-clamp-1">
+              <Title content={title} className="line-clamp-1 leading-8">
                 {title}
               </Title>
             </CardTitle>
@@ -93,7 +93,7 @@ const GameCard = ({
 
   if (size === "slide") {
     return (
-      <Card className={cn("flex flex-col", className)}>
+      <Card className={cn("flex flex-col p-0", className)}>
         <CardHeader className="shrink-0 w-full flex items-center justify-center relative overflow-hidden">
           <Image
             src={coverImage}
@@ -112,7 +112,7 @@ const GameCard = ({
             <CardDescription>
               <Title
                 content={description}
-                className="line-clamp-1 text-red-200"
+                className="line-clamp-1 text-red-200 leading-8"
               >
                 {description}
               </Title>
@@ -129,7 +129,7 @@ const GameCard = ({
   }
 
   return (
-    <Card className={"flex items-center flex-wrap"}>
+    <Card className={cn("flex items-center flex-wrap", className)}>
       <CardHeader className="shrink-0 w-full flex items-center justify-center">
         <Image
           src={coverImage}
@@ -142,7 +142,7 @@ const GameCard = ({
       <div className="space-y-2 flex-1">
         <CardContent className="py-0">
           <CardTitle>
-            <Title content={title} className="line-clamp-1">
+            <Title content={title} className="line-clamp-1 leading-8">
               {title}
             </Title>
           </CardTitle>

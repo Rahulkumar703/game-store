@@ -20,7 +20,7 @@ const games = [
       "A high-octane FPS with a gripping campaign and competitive multiplayer modes.",
     genre: "FPS",
     coverImage:
-      "https://th.bing.com/th/id/OIP.5K8vN75_vQXqXT4l6OR_3AHaEK?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/OIP.11f-IXouGQc1gd_AC8QdQQHaEK?rs=1&pid=ImgDetMain",
     tags: ["Shooter", "Multiplayer", "Action"],
     downloadSize: "120GB",
     rating: 4.5,
@@ -32,7 +32,7 @@ const games = [
       "An open-world action-adventure game where you explore the vast kingdom of Hyrule and solve ancient puzzles.",
     genre: "Adventure",
     coverImage:
-      "https://th.bing.com/th/id/OIP.5K8vN75_vQXqXT4l6OR_3AHaEK?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/OIP._wgfFq8aDeFxjLHDzNzknAHaEK?rs=1&pid=ImgDetMain",
     tags: ["Adventure", "Fantasy", "Open World"],
     downloadSize: "14.4GB",
     rating: 4.9,
@@ -44,7 +44,7 @@ const games = [
       "A party game of teamwork and betrayal as you work together to complete tasks or sabotage the mission.",
     genre: "Party",
     coverImage:
-      "https://th.bing.com/th/id/OIP.5K8vN75_vQXqXT4l6OR_3AHaEK?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/OIP.3JNp8Om-jc0VpyT0eH7u7AHaEK?rs=1&pid=ImgDetMain",
     tags: ["Multiplayer", "Social Deduction", "Casual"],
     downloadSize: "0.5GB",
     rating: 4.3,
@@ -56,7 +56,7 @@ const games = [
       "A sandbox game that lets you build, explore, and survive in a blocky, procedurally generated world.",
     genre: "Sandbox",
     coverImage:
-      "https://th.bing.com/th/id/OIP.5K8vN75_vQXqXT4l6OR_3AHaEK?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/OIP.0L9oSnoLyNKnqNE4jLTUBAHaEK?rs=1&pid=ImgDetMain",
     tags: ["Creative", "Survival", "Multiplayer"],
     downloadSize: "1GB",
     rating: 4.7,
@@ -68,7 +68,7 @@ const games = [
       "A challenging and beautifully hand-drawn action platformer set in a mysterious underground world.",
     genre: "Action",
     coverImage:
-      "https://th.bing.com/th/id/OIP.5K8vN75_vQXqXT4l6OR_3AHaEK?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/OIP.aZ68YiDSQgPiME05BGGOMAHaEK?rs=1&pid=ImgDetMain",
     tags: ["Metroidvania", "Indie", "Exploration"],
     downloadSize: "9GB",
     rating: 4.8,
@@ -80,7 +80,7 @@ const games = [
       "A battle royale game where you fight to be the last one standing while building structures to gain an edge.",
     genre: "Battle Royale",
     coverImage:
-      "https://th.bing.com/th/id/OIP.5K8vN75_vQXqXT4l6OR_3AHaEK?rs=1&pid=ImgDetMain",
+      "https://th.bing.com/th/id/OIP.qDsFMSalv4w7iwARDdqX2AHaEK?rs=1&pid=ImgDetMain",
     tags: ["Shooter", "Multiplayer", "Building"],
     downloadSize: "30GB",
     rating: 4.6,

@@ -3,17 +3,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import GameCard from "./game-card";
 import { cn } from "@/lib/utils";
-import {
-  Pagination,
-  Navigation,
-  Autoplay,
-  Keyboard,
-  EffectCoverflow,
-} from "swiper/modules";
+import { Autoplay, Keyboard, EffectCoverflow } from "swiper/modules";
 
 const Carousel = ({ slides, className }) => {
   return (
@@ -41,9 +33,6 @@ const Carousel = ({ slides, className }) => {
         delay: 2000,
         disableOnInteraction: false,
       }}
-      pagination={{
-        clickable: true,
-      }}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -52,7 +41,7 @@ const Carousel = ({ slides, className }) => {
           slidesPerView: 2,
         },
       }}
-      modules={[EffectCoverflow, Keyboard, Autoplay, Pagination, Navigation]}
+      modules={[EffectCoverflow, Keyboard, Autoplay]}
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>

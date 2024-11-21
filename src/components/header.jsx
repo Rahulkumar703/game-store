@@ -10,7 +10,7 @@ const headerFont = Pixelify_Sans({
 });
 const Header = () => {
   return (
-    <header className="flex items-center justify-between p-2 py-3 bg-sidebar border border-transparent border-b-sidebar-border sticky top-0 shadow">
+    <header className="flex items-center justify-between p-2 py-3 bg-sidebar border border-transparent border-b-sidebar-border sticky top-0 shadow z-30">
       <SidebarTrigger />
       <H1 className={`font-bold ${headerFont.className}`}>Yono Game Store</H1>
     </header>
