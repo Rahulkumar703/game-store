@@ -11,9 +11,10 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 // Menu items.
-const items = [
+const homeItems = [
   {
     title: "Home",
     url: "/",
@@ -36,6 +37,29 @@ const items = [
   },
 ];
 
+const dashboardItems = [
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: Home,
+  },
+  {
+    title: "All Games",
+    url: "/dashboard/top-games",
+    icon: Swords,
+  },
+  {
+    title: "Top Games",
+    url: "/dashboard/top-games",
+    icon: Gamepad2,
+  },
+  {
+    title: "Rummy",
+    url: "/dashboard/rummy",
+    icon: Club,
+  },
+];
+
 export function AppSidebar() {
   return (
     <Sidebar variant="sidebar">
@@ -44,7 +68,7 @@ export function AppSidebar() {
           <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {dashboardItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link
@@ -57,6 +81,14 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              {/* <SidebarMenuItem>
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </SidebarMenuItem> */}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
