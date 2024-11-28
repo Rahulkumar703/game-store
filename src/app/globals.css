@@ -91,4 +91,7 @@ body {
   .star-container {
     @apply w-4 h-4;
   }
+  .cl-userButtonPopoverCard.cl-popoverBox.cl-userButton-popover {
+    z-index: 51;
+  }
 }

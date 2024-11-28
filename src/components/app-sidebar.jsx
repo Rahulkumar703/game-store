@@ -1,4 +1,4 @@
-import { Club, Gamepad2, Home, Swords } from "lucide-react";
+import { Club, Gamepad2, Home, LogIn, Swords } from "lucide-react";
 
 import {
   Sidebar,
@@ -11,7 +11,9 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { H3, H4, Muted } from "./ui/typography";
 
 // Menu items.
 const homeItems = [
@@ -22,7 +24,7 @@ const homeItems = [
   },
   {
     title: "All Games",
-    url: "/top-games",
+    url: "/all-games",
     icon: Swords,
   },
   {
@@ -37,6 +39,7 @@ const homeItems = [
   },
 ];
 
+// Dashboard Items
 const dashboardItems = [
   {
     title: "Dashboard",
@@ -45,7 +48,7 @@ const dashboardItems = [
   },
   {
     title: "All Games",
-    url: "/dashboard/top-games",
+    url: "/dashboard/all-games",
     icon: Swords,
   },
   {
@@ -60,35 +63,64 @@ const dashboardItems = [
   },
 ];
 
-export function AppSidebar() {
+export async function AppSidebar() {
+  const session = await currentUser();
+
+  const list = session ? dashboardItems : homeItems;
+
   return (
     <Sidebar variant="sidebar">
       <SidebarContent>
-        <SidebarGroup>
+        <SidebarGroup className="h-full">
           <SidebarGroupLabel>Menu</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {dashboardItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
+          <SidebarGroupContent className="h-full">
+            <SidebarMenu className="flex h-full">
+              <SignedOut>
+                {homeItems.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <Link
+                        href={item.url}
+                        className="hover:text-red-500 py-6 font-semibold"
+                      >
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+                <SidebarMenuItem className="mt-auto">
                   <SidebarMenuButton asChild>
-                    <Link
-                      href={item.url}
-                      className="hover:text-red-500 py-6 font-semibold"
-                    >
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
+                    <div className="flex items-center justify-start">
+                      <LogIn className="w-4 h-4 mr-2" />
+                      <SignInButton className="" />
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              ))}
-              {/* <SidebarMenuItem>
-                <SignedOut>
-                  <SignInButton />
-                </SignedOut>
-                <SignedIn>
-                  <UserButton />
-                </SignedIn>
-              </SidebarMenuItem> */}
+              </SignedOut>
+
+              <SignedIn>
+                {dashboardItems.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <Link
+                        href={item.url}
+                        className="hover:text-red-500 py-6 font-semibold"
+                      >
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+
+                <SidebarMenuItem className="mt-auto">
+                  <div className="flex gap-2 items-center p-2">
+                    <UserButton />
+                    <H4>{session?.firstName}</H4>
+                  </div>
+                </SidebarMenuItem>
+              </SignedIn>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
