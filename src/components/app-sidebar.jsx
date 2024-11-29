@@ -11,9 +11,9 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { H3, H4, Muted } from "./ui/typography";
+import { H4 } from "./ui/typography";
 
 // Menu items.
 const homeItems = [
@@ -32,11 +32,11 @@ const homeItems = [
     url: "top-games",
     icon: Gamepad2,
   },
-  {
-    title: "Rummy",
-    url: "/rummy",
-    icon: Club,
-  },
+  // {
+  //   title: "Rummy",
+  //   url: "/rummy",
+  //   icon: Club,
+  // },
 ];
 
 // Dashboard Items
@@ -56,17 +56,15 @@ const dashboardItems = [
     url: "/dashboard/top-games",
     icon: Gamepad2,
   },
-  {
-    title: "Rummy",
-    url: "/dashboard/rummy",
-    icon: Club,
-  },
+  // {
+  //   title: "Rummy",
+  //   url: "/dashboard/rummy",
+  //   icon: Club,
+  // },
 ];
 
 export async function AppSidebar() {
   const session = await currentUser();
-
-  const list = session ? dashboardItems : homeItems;
 
   return (
     <Sidebar variant="sidebar">

@@ -5,6 +5,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import Header from "@/components/header";
 import { Pixelify_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const siteFont = Pixelify_Sans({
   subsets: ["latin"],
@@ -23,12 +24,14 @@ export default async function RootLayout({ children }) {
       <body className={`${siteFont.className} antialiased`}>
         <ClerkProvider>
           <SidebarProvider defaultOpen={true}>
-            <AppSidebar />
-            <div className="flex flex-col flex-1">
-              <Header />
-              <main className="flex flex-col p-4">{children}</main>
-              <Footer />
-            </div>
+            <TooltipProvider>
+              <AppSidebar />
+              <div className="flex flex-col flex-1">
+                <Header />
+                <main className="flex flex-col p-4">{children}</main>
+                <Footer />
+              </div>
+            </TooltipProvider>
           </SidebarProvider>
         </ClerkProvider>
       </body>

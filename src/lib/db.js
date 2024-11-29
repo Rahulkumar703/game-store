@@ -15,4 +15,4 @@ if (!global.prismaGlobal) {
   prisma = global.prismaGlobal;
 }
 
-module.exports = prisma;
+export default prisma;
