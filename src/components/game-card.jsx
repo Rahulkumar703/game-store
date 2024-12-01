@@ -33,6 +33,7 @@ const cardVariants = cva("flex", {
 
 const GameCard = ({
   title,
+  slug,
   description,
   genre,
   coverImage,
@@ -45,49 +46,51 @@ const GameCard = ({
 }) => {
   if (size === "list") {
     return (
-      <Card className={cn("flex flex-col", className)}>
-        <CardHeader className="flex-row gap-3 items-center">
-          <Image
-            src={coverImage}
-            width={100}
-            height={100}
-            alt={title}
-            className="w-14 h-14 object-cover rounded-md"
-          />
-          <div className="">
-            <CardTitle>
-              <Title content={title} className="line-clamp-1 leading-8">
-                {title}
-              </Title>
-            </CardTitle>
-            <CardDescription>
-              <Title content={description}>{description}</Title>
-            </CardDescription>
-          </div>
-        </CardHeader>
+      <Link href={`/game/${slug}`}>
+        <Card className={cn("flex flex-col", className)}>
+          <CardHeader className="flex-row gap-3 items-center">
+            <Image
+              src={coverImage}
+              width={100}
+              height={100}
+              alt={title}
+              className="w-14 h-14 object-cover rounded-md"
+            />
+            <div className="">
+              <CardTitle>
+                <Title content={title} className="line-clamp-1 leading-8">
+                  {title}
+                </Title>
+              </CardTitle>
+              <CardDescription>
+                <Title content={description}>{description}</Title>
+              </CardDescription>
+            </div>
+          </CardHeader>
 
-        <CardFooter className="flex items-center justify-between flex-wrap gap-2 mt-auto">
-          <div className="flex gap-2 items-center">
-            <Ratings rating={rating} />
-            <Muted>{rating}</Muted>
-          </div>
-          <Link
-            href={downloadLink}
-            download={true}
-            className="md:w-auto w-full"
-          >
-            <Button className="w-full">
-              <Download />
-              <span>
-                Download &nbsp;
-                <span className="text-red-400 font-sans text-sm">
-                  ({downloadSize})
+          <CardFooter className="flex items-center justify-between flex-wrap gap-2 mt-auto">
+            <div className="flex gap-2 items-center">
+              <Ratings rating={rating} />
+              <Muted>{rating}</Muted>
+            </div>
+            <Link
+              href={downloadLink}
+              download={true}
+              className="md:w-auto w-full"
+            >
+              <Button className="w-full">
+                <Download />
+                <span>
+                  Download &nbsp;
+                  <span className="text-red-400 font-sans text-sm">
+                    ({downloadSize})
+                  </span>
                 </span>
-              </span>
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
+              </Button>
+            </Link>
+          </CardFooter>
+        </Card>
+      </Link>
     );
   }
 
@@ -129,47 +132,50 @@ const GameCard = ({
   }
 
   return (
-    <Card className={cn("flex items-center flex-wrap", className)}>
-      <CardHeader className="shrink-0 w-full flex items-center justify-center">
-        <Image
-          src={coverImage}
-          width={300}
-          height={300}
-          alt={title}
-          className="object-cover w-full h-full max-h-60 rounded-md shrink-0"
-        />
-      </CardHeader>
-      <div className="space-y-2 flex-1">
-        <CardContent className="py-0">
-          <CardTitle>
-            <Title content={title} className="line-clamp-1 leading-8">
-              {title}
-            </Title>
-          </CardTitle>
-          <CardDescription>
-            <Title content={description}>{description}</Title>
-          </CardDescription>
-        </CardContent>
-        <CardFooter className="flex flex-col items-start gap-6">
-          <Badge>{genre}</Badge>
-          <div className="flex gap-2 items-center">
-            <Ratings rating={rating} />
-            <Muted>{rating}</Muted>
-          </div>
-          <Link href={downloadLink} download={true} className="w-full block">
-            <Button className="w-full flex items-center">
-              <Download />
-              <span>
-                Download &nbsp;
-                <span className="text-red-400 font-sans text-sm">
-                  ({downloadSize})
+    <Link href={`/game/${slug}`}>
+
+      <Card className={cn("flex items-center flex-wrap", className)}>
+        <CardHeader className="shrink-0 w-full flex items-center justify-center">
+          <Image
+            src={coverImage}
+            width={300}
+            height={300}
+            alt={title}
+            className="object-cover w-full h-full max-h-60 rounded-md shrink-0"
+          />
+        </CardHeader>
+        <div className="space-y-2 flex-1">
+          <CardContent className="py-0">
+            <CardTitle>
+              <Title content={title} className="line-clamp-1 leading-8">
+                {title}
+              </Title>
+            </CardTitle>
+            <CardDescription>
+              <Title content={description}>{description}</Title>
+            </CardDescription>
+          </CardContent>
+          <CardFooter className="flex flex-col items-start gap-6">
+            <Badge>{genre}</Badge>
+            <div className="flex gap-2 items-center">
+              <Ratings rating={rating} />
+              <Muted>{rating}</Muted>
+            </div>
+            <Link href={downloadLink} download={true} className="w-full block">
+              <Button className="w-full flex items-center">
+                <Download />
+                <span>
+                  Download &nbsp;
+                  <span className="text-red-400 font-sans text-sm">
+                    ({downloadSize})
+                  </span>
                 </span>
-              </span>
-            </Button>
-          </Link>
-        </CardFooter>
-      </div>
-    </Card>
+              </Button>
+            </Link>
+          </CardFooter>
+        </div>
+      </Card>
+    </Link>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Club, Gamepad2, Home, LogIn, Swords } from "lucide-react";
+import { Club, Gamepad2, Home, LogIn, LogOut, Swords } from "lucide-react";
 
 import {
   Sidebar,
@@ -12,8 +12,10 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/server";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
 import { H4 } from "./ui/typography";
+import { Button } from "./ui/button";
+import Title from "./title";
 
 // Menu items.
 const homeItems = [
@@ -48,17 +50,17 @@ const dashboardItems = [
   },
   {
     title: "All Games",
-    url: "/dashboard/all-games",
+    url: "/all-games",
     icon: Swords,
   },
   {
     title: "Top Games",
-    url: "/dashboard/top-games",
+    url: "/top-games",
     icon: Gamepad2,
   },
   // {
   //   title: "Rummy",
-  //   url: "/dashboard/rummy",
+  //   url: "/rummy",
   //   icon: Club,
   // },
 ];
@@ -68,7 +70,7 @@ export async function AppSidebar() {
 
   return (
     <Sidebar variant="sidebar">
-      <SidebarContent>
+      <SidebarContent >
         <SidebarGroup className="h-full">
           <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent className="h-full">
@@ -87,14 +89,14 @@ export async function AppSidebar() {
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
-                <SidebarMenuItem className="mt-auto">
+                {/* <SidebarMenuItem className="mt-auto">
                   <SidebarMenuButton asChild>
                     <div className="flex items-center justify-start">
                       <LogIn className="w-4 h-4 mr-2" />
                       <SignInButton className="" />
                     </div>
                   </SidebarMenuButton>
-                </SidebarMenuItem>
+                </SidebarMenuItem> */}
               </SignedOut>
 
               <SignedIn>
@@ -113,10 +115,19 @@ export async function AppSidebar() {
                 ))}
 
                 <SidebarMenuItem className="mt-auto">
-                  <div className="flex gap-2 items-center p-2">
-                    <UserButton />
-                    <H4>{session?.firstName}</H4>
+
+                  <div className="flex justify-between gap-2 items-center p-2 relative z-20">
+                    <div className="flex items-center gap-2">
+                      <UserButton className="z-20" />
+                      <H4>{session?.firstName}</H4>
+                    </div>
+                    <Title content={'Log out'} asChild className={'shrink-0'} >
+                      <SignOutButton className='inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-destructive text-destructive-foreground hover:bg-destructive/90 h-9 px-3 w-9 cursor-pointer'>
+                        <LogOut className="w-4 h-4" />
+                      </SignOutButton>
+                    </Title>
                   </div>
+
                 </SidebarMenuItem>
               </SignedIn>
             </SidebarMenu>
