@@ -15,7 +15,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "./ui/badge";
 import Title from "./title";
-import { cn } from "@/lib/utils";
+import { cn, formatDownload } from "@/lib/utils";
 
 const cardVariants = cva("flex", {
   variants: {
@@ -38,6 +38,7 @@ const GameCard = ({
   genre,
   coverImage,
   tags,
+  downloads,
   downloadSize,
   rating,
   downloadLink,
@@ -96,44 +97,45 @@ const GameCard = ({
 
   if (size === "slide") {
     return (
-      <Card className={cn("flex flex-col p-0", className)}>
-        <CardHeader className="shrink-0 w-full flex items-center justify-center relative overflow-hidden">
-          <Image
-            src={coverImage}
-            width={1000}
-            height={384}
-            alt={title}
-            className="object-fill aspect-video w-full h-full max-h-96 rounded-lg shrink-0"
-          />
+      <Link href={`/game/${slug}`}>
+        <Card className={cn("flex flex-col p-0 select-none group", className)}>
+          <CardHeader className="shrink-0 w-full flex items-center justify-center relative overflow-hidden">
+            <Image
+              src={coverImage}
+              width={1000}
+              height={384}
+              alt={title}
+              className="object-fill aspect-video w-full h-full max-h-96 rounded-lg shrink-0"
+            />
 
-          <div className="absolute bottom-6 w-[calc(100%-48px)] p-6 bg-black/20 backdrop-blur-lg rounded-lg overflow-hidden ">
-            <CardTitle>
-              <Title content={title} className="line-clamp-1 text-red-500">
-                {title}
-              </Title>
-            </CardTitle>
-            <CardDescription>
-              <Title
-                content={description}
-                className="line-clamp-1 text-red-200 leading-8"
-              >
-                {description}
-              </Title>
-            </CardDescription>
-            <Badge className={"bg-white text-black"}>{genre}</Badge>
-            <div className="flex gap-2 items-center">
-              <Ratings rating={rating} />
-              <Muted className={"text-gray-200"}>{rating}</Muted>
+            <div className="flex flex-col gap-2 items-start absolute bottom-6 h-[calc(100%-48px)] translate-y-[calc(100%+48px)] group-hover:translate-y-0 transition w-[calc(100%-48px)] p-6 bg-black/20 backdrop-blur-lg rounded-lg ">
+              <CardTitle>
+                <Title content={title} className="line-clamp-1 text-red-500">
+                  {title}
+                </Title>
+              </CardTitle>
+              <CardDescription>
+                <Title
+                  content={description}
+                  className="line-clamp-2 text-red-200 leading-1"
+                >
+                  {description}
+                </Title>
+              </CardDescription>
+              <Badge variant={'secondary'}>{genre}</Badge>
+              <div className="flex gap-2 items-center">
+                <Ratings rating={rating} />
+                <Muted className={"text-gray-200"}>{rating}</Muted>
+              </div>
             </div>
-          </div>
-        </CardHeader>
-      </Card>
+          </CardHeader>
+        </Card>
+      </Link>
     );
   }
 
   return (
     <Link href={`/game/${slug}`}>
-
       <Card className={cn("flex items-center flex-wrap", className)}>
         <CardHeader className="shrink-0 w-full flex items-center justify-center">
           <Image
@@ -157,9 +159,13 @@ const GameCard = ({
           </CardContent>
           <CardFooter className="flex flex-col items-start gap-6">
             <Badge>{genre}</Badge>
-            <div className="flex gap-2 items-center">
+            <div className="flex w-full gap-2 items-center">
               <Ratings rating={rating} />
               <Muted>{rating}</Muted>
+              <div className="flex ml-auto items-center text-muted-foreground gap-1">
+                <Download className="w-3 h-3" />
+                {formatDownload(downloads)}
+              </div>
             </div>
             <Link href={downloadLink} download={true} className="w-full block">
               <Button className="w-full flex items-center">

@@ -8,24 +8,25 @@ datasource db {
 }
 
 model Game {
-  id            Int      @id @default(autoincrement())
-  slug          String   @unique
-  title         String
-  description   String
-  genre         String
-  coverImage    String
-  tags          Tags[]  
-  downloadSize  String
-  rating        Float
-  downloadLink  String
-  downloads     Int      @default(0)
-  views         Int      @default(0)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  slug         String   @unique
+  title        String
+  description  String
+  genre        String
+  coverImage   String
+  tags         Tags[]
+  downloadSize String
+  version      String   @default("1.0.0")
+  rating       Float
+  downloadLink String
+  downloads    Int      @default(0)
+  views        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model Tags {
-  id      Int      @id @default(autoincrement())
-  name    String   @unique
-  games   Game[]  
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  games Game[]
 }

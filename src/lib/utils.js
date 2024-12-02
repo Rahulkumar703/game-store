@@ -10,3 +10,13 @@ export function trim(str, size = 20) {
     return str.slice(0, size) + "...";
   } else return str;
 }
+
+
+export function formatDownload(downloads) {
+  const newCount = downloads / 1000;
+  if (!newCount) return downloads;
+  if (downloads % 1000 === 0) {
+    return `${newCount}k`
+  }
+  return `${newCount}k+`
+}

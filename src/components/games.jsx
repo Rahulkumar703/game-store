@@ -3,7 +3,7 @@ import { P } from "./ui/typography";
 
 const Games = ({ games }) => {
     return (
-        <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
             {games.length
                 ?
                 games.map((game) => {
