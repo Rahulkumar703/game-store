@@ -1,4 +1,3 @@
-import { cva } from "class-variance-authority";
 import {
   Card,
   CardContent,
@@ -9,27 +8,13 @@ import {
 } from "./ui/card";
 import Ratings from "./ratings";
 import { Muted } from "./ui/typography";
-import { Button } from "./ui/button";
 import { Download } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "./ui/badge";
 import Title from "./title";
-import { cn, formatDownload } from "@/lib/utils";
+import { cn, formatNumber } from "@/lib/utils";
 
-const cardVariants = cva("flex", {
-  variants: {
-    size: {
-      default: "h-10 px-4 py-2",
-      sm: "h-9 rounded-md px-3",
-      lg: "h-11 rounded-md px-8",
-      icon: "h-10 w-10",
-    },
-  },
-  defaultVariants: {
-    size: "default",
-  },
-});
 
 const GameCard = ({
   title,
@@ -47,8 +32,8 @@ const GameCard = ({
 }) => {
   if (size === "list") {
     return (
-      <Link href={`/game/${slug}`}>
-        <Card className={cn("flex flex-col", className)}>
+      <Link href={`/game/${slug}`} className={cn("flex-1", className)}>
+        <Card className={cn("flex flex-col")}>
           <CardHeader className="flex-row gap-3 items-center">
             <Image
               src={coverImage}
@@ -74,7 +59,7 @@ const GameCard = ({
               <Ratings rating={rating} />
               <Muted>{rating}</Muted>
             </div>
-            <Link
+            {/* <Link
               href={downloadLink}
               download={true}
               className="md:w-auto w-full"
@@ -88,7 +73,7 @@ const GameCard = ({
                   </span>
                 </span>
               </Button>
-            </Link>
+            </Link> */}
           </CardFooter>
         </Card>
       </Link>
@@ -164,10 +149,10 @@ const GameCard = ({
               <Muted>{rating}</Muted>
               <div className="flex ml-auto items-center text-muted-foreground gap-1">
                 <Download className="w-3 h-3" />
-                {formatDownload(downloads)}
+                {formatNumber(downloads)}
               </div>
             </div>
-            <Link href={downloadLink} download={true} className="w-full block">
+            {/* <Link href={downloadLink} download={true} className="w-full block">
               <Button className="w-full flex items-center">
                 <Download />
                 <span>
@@ -177,7 +162,7 @@ const GameCard = ({
                   </span>
                 </span>
               </Button>
-            </Link>
+            </Link> */}
           </CardFooter>
         </div>
       </Card>

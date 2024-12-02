@@ -8,13 +8,20 @@ import { SignedIn } from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 
+
+export const metadata = {
+  title: 'All Games | Yono Game Store',
+  description: 'Yono Game Store has a vast and popular games collection.',
+}
+
+
 const AllGames = async () => {
   const res = await getAllGames();
 
   const games = res?.data || [];
 
   return (
-    <section className="flex flex-col gap-10">
+    <section className="container mx-auto bg-background flex flex-col gap-10">
       <div className="flex items-center justify-between">
         <H2 className={"border-0"}>All Games</H2>
         <SignedIn>

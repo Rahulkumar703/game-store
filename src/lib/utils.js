@@ -12,10 +12,10 @@ export function trim(str, size = 20) {
 }
 
 
-export function formatDownload(downloads) {
-  const newCount = downloads / 1000;
-  if (!newCount) return downloads;
-  if (downloads % 1000 === 0) {
+export function formatNumber(number) {
+  if (number < 1000) return number;
+  const newCount = number / 1000;
+  if (number % 1000 === 0) {
     return `${newCount}k`
   }
   return `${newCount}k+`

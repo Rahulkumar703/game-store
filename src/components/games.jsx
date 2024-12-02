@@ -1,5 +1,5 @@
 import GameCard from "./game-card";
-import { P } from "./ui/typography";
+import { H3 } from "./ui/typography";
 
 const Games = ({ games }) => {
     return (
@@ -10,7 +10,7 @@ const Games = ({ games }) => {
                     return <GameCard {...game} key={game.id} />;
                 })
                 :
-                <P className={'text-destructive text-center col-span-4 mt-10'}>No games found</P>
+                <H3 className={'text-destructive text-center col-span-4 mt-10'}>No games found</H3>
             }
         </div>
     )

@@ -7,6 +7,8 @@ import { Pixelify_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import SocialIcons from "@/components/social";
+import { Toaster } from "@/components/ui/sonner"
+
 
 const siteFont = Pixelify_Sans({
   subsets: ["latin"],
@@ -32,6 +34,7 @@ export default async function RootLayout({ children }) {
                 <main className="flex flex-col p-4">{children}</main>
                 <SocialIcons />
                 <Footer />
+                <Toaster />
               </div>
             </TooltipProvider>
           </SidebarProvider>
